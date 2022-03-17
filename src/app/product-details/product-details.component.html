@@ -1,0 +1,9 @@
+<div class="product-details">
+  <h2 class="product-details__title">Product Details</h2>
+
+  <div class="product-details__container" *ngIf="product">
+    <h3 class="product-details__name">{{ product.name }}</h3>
+    <p class="product-details__text">{{ product.price | currency }}</p>
+    <p class="product-details__text">{{ product.description }}</p>
+  </div>
+</div>

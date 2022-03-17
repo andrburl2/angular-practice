@@ -1,0 +1,21 @@
+<div class="product">
+  <a
+    class="product__title"
+    [routerLink]="['/products', product.id]"
+    [title]="product.name + ' details'"
+  >
+    {{ product.name }}
+  </a>
+
+  <p class="product__text" *ngIf="product.description">
+    {{product.description}}
+  </p>
+
+  <button class="product__button" type="button" (click)="shareProduct()">Share!</button>
+
+  <app-product-alerts
+    [style]="'display: flex; justify-content: flex-end'"
+    [product]="product"
+    (notify)="onNotify()"
+  ></app-product-alerts>
+</div>
