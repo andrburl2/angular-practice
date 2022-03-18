@@ -42,4 +42,15 @@
     background-color: #0000ff;
     color: #fff;
   }
+
+  &:disabled {
+    border: 2px solid #969696;
+    transition: .3s ease-in-out;
+    cursor: default;
+
+    &:hover {
+      background: transparent;
+      color: #969696;
+    }
+  }
 }

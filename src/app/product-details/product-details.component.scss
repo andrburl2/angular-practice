@@ -32,8 +32,31 @@
   margin: 0 0 10px;
   font-size: 18px;
   line-height: 1;
+}
 
-  &:last-of-type {
-    margin: 0;
+.product-details__button {
+  margin: 10px 0 0;
+  padding: 0 20px;
+  background-color: #1a1abb;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.5;
+  border-radius: 20px;
+  align-self: center;
+  cursor: pointer;
+  transition: .75s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    background-color: #969696;
+    cursor: default;
+  
+    &:hover {
+      transform: none;
+    }
   }
 }

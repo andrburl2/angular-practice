@@ -1,0 +1,16 @@
+<div class="cart">
+  <h2 class="cart__title">Cart</h2>
+
+  <a class="cart__link" routerLink="/shipping">Shipping Prices</a>
+
+  <div class="cart__container" *ngIf="items.length > 0; else emptyCart">
+    <div class="cart__item" *ngFor="let item of items">
+      <p class="cart__text">{{ item.name }}</p>
+      <p class="cart__text">{{ item.price | currency }}</p>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <a class="cart__error" routerLink="/">Cart is empty. Go and buy something</a>
+  </ng-template>
+</div>
