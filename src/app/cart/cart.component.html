@@ -1,13 +1,33 @@
 <div class="cart">
   <h2 class="cart__title">Cart</h2>
 
-  <a class="cart__link" routerLink="/shipping">Shipping Prices</a>
-
   <div class="cart__container" *ngIf="items.length > 0; else emptyCart">
     <div class="cart__item" *ngFor="let item of items">
       <p class="cart__text">{{ item.name }}</p>
       <p class="cart__text">{{ item.price | currency }}</p>
     </div>
+
+    <p class="cart__total">Total: {{ calculateCost() | currency }}</p>
+
+    <form class="cart__form" [formGroup]="checkoutForm" (ngSubmit)="submitForm()">
+      <label class="cart__label" for="shipping">Shipping</label>
+      <select class="cart__input" formControlName="shipping" placeholder="Shipping">
+        <option
+          *ngFor="let shipping of shippingCosts | async"
+          [value]="shipping.price"
+        >
+          {{ shipping.type }}: {{ shipping.price | currency }}
+        </option>
+      </select>  
+    
+      <label class="cart__label" for="name">Name</label>
+      <input class="cart__input" formControlName="name" type="text" placeholder="Andrey">
+  
+      <label class="cart__label" for="address">Address</label>
+      <input class="cart__input" formControlName="address" type="text" placeholder="Nizhny Novgorod">
+  
+      <button class="cart__button" type="submit" [disabled]='checkoutForm.invalid'>Purchase</button>
+    </form>
   </div>
 
   <ng-template #emptyCart>
