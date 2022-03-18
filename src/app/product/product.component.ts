@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../products';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product',
@@ -9,16 +10,16 @@ import { Product } from '../products';
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
 
-  constructor() { }
+  inCart: boolean = false;
 
-  shareProduct(): void {
-    alert('Product has been shared!');
-  }
-
-  onNotify(): void {
-    alert('You will be notified when the product goes on sale');
-  }
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
+    this.inCart = this.cartService.isInCart(this.product);
+  }
+
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product);
+    this.inCart = true;
   }
 }

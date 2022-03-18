@@ -11,11 +11,12 @@
     {{product.description}}
   </p>
 
-  <button class="product__button" type="button" (click)="shareProduct()">Share!</button>
-
-  <app-product-alerts
-    [style]="'display: flex; justify-content: flex-end'"
-    [product]="product"
-    (notify)="onNotify()"
-  ></app-product-alerts>
+  <button
+    class="product__button"
+    type="button"
+    (click)="addToCart(product)"
+    [disabled]="inCart"
+  >
+    {{ inCart ? 'In your cart' : 'Buy' }}
+  </button>
 </div>
